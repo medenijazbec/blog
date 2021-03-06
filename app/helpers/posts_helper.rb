@@ -12,21 +12,24 @@ module PostsHelper
             end
         end
         html.html_safe
-      end
+      
     
       def display_show_post_links(post)
-        html = ""
-        if current_user == post.user
-          html += link_to 'Edit', edit_post_path(post)
-          html += ' | '
-          capture do
+          html = ""
             if current_user == post.user
-              concat link_to 'Edit', edit_post_path(post)
-              concat ' | '
+             html += link_to 'Edit', edit_post_path(post)
+             html += ' | '
+            capture do
+                if current_user == post.user
+                concat link_to 'Edit', edit_post_path(post)
+                concat ' | '
+                end
+                concat link_to 'Back', posts_path
             end
-            concat link_to 'Back', posts_path
+            html += link_to 'Back', posts_path
+            html.html_safe
         end
-        html += link_to 'Back', posts_path
-        html.html_safe
-      end
+    end
+end        
+end
 end
