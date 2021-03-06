@@ -11,7 +11,15 @@
   </head>
 
   <body>
-
+  <div class="navbar">
+  <%= link_to "Domov", root_path %>
+  <%= link_to "Prijava", new_user_session_path %>
+  <%= link_to "Registracija", new_user_registration_path %>
+  <%= link_to "Odjava", destroy_user_session_path, method: :delete %>
+  <%= display_navbar_options %>
+  <%= link_to "Domov", root_path %>
+  <%= display_session_links %>
+</div>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
